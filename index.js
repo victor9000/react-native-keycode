@@ -48,11 +48,7 @@ export class KeycodeInput extends Component {
     }
   }
 
-  async componentWillReceiveProps (nextProps) {
-    if ('value' in nextProps && nextProps.value !== this.state.value) {
-      await this._setValue(nextProps.value)
-    }
-
+  async componentDidUpdate(prevProps) {
     if (this.state.value.length < this.props.length) {
       this.props.autoFocus && this.input.focus()
     } else {
